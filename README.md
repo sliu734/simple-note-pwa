@@ -115,3 +115,4 @@ This app was deployed to [Vercel](https://vercel.com/) in 1 click:
 Thanks to `vite-plugin-pwa`, all static assets are cached for offline use automatically.
 
 ---
+aa
