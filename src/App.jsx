@@ -1,44 +1,60 @@
+console.log('✅ App component loaded');
+
 
 // Simple Notes App
 import { useState, useEffect } from 'react';
 import './App.css';
 
+const API_BASE = 'http://localhost:4000/api/notes';
+
 function App() {
   const [input, setInput] = useState('');
   const [notes, setNotes] = useState([]);
 
+  // load data（GET）
   useEffect(() => {
-    const savedNotes = JSON.parse(localStorage.getItem('simple-notes'));
-    if (savedNotes) {
-      setNotes(savedNotes);
-    }
+    fetch(API_BASE)
+      .then(res => res.json())
+      .then(data => setNotes(data))
+      .catch(err => console.error('Failed to load notes:', err));
   }, []);
 
+  // add note（POST）
   const handleAddNote = () => {
     if (input.trim() === '') return;
+
     const newNote = {
-      id: Date.now(),
+      id: Date.now().toString(),  // time string as id
       text: input,
       completed: false
     };
-    const updatedNotes = [...notes, newNote];
-    setNotes(updatedNotes);
-    setInput('');
-    localStorage.setItem('simple-notes', JSON.stringify(updatedNotes));
+
+    fetch(API_BASE, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newNote)
+    })
+      .then(res => res.json())
+      .then(data => {
+        setNotes([...notes, data]);
+        setInput('');
+      })
+      .catch(err => console.error('Failed to add note:', err));
   };
 
+  // delete note（DELETE）
   const handleDelete = (id) => {
-    const updatedNotes = notes.filter(note => note.id !== id);
-    setNotes(updatedNotes);
-    localStorage.setItem('simple-notes', JSON.stringify(updatedNotes));
+    fetch(`${API_BASE}/${id}`, { method: 'DELETE' })
+      .then(() => setNotes(notes.filter(note => note.id !== id)))
+      .catch(err => console.error('Failed to delete note:', err));
   };
 
+  // toggle note completion
   const handleToggleComplete = (id) => {
     const updatedNotes = notes.map(note =>
       note.id === id ? { ...note, completed: !note.completed } : note
     );
     setNotes(updatedNotes);
-    localStorage.setItem('simple-notes', JSON.stringify(updatedNotes));
   };
 
   return (

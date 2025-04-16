@@ -12,7 +12,7 @@ export default defineConfig({
       manifest: {
         name: 'Simple Notes',
         short_name: 'Notes',
-        description: 'A simple PWA note-taking app built with React',
+        description: 'A simple PWA note-taking app built with React and express',
         theme_color: '#0f2027',
         background_color: '#0f2027',
         display: 'standalone',

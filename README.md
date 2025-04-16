@@ -1,3 +1,41 @@
+# 📝 Simple Notes (CS732 Tech Demo)
+
+This is my tech demo submission for **CS732 Assignment - Tech Demo**.  
+It’s a Progressive Web App (PWA) built with **React + Vite** on the frontend and **Express + Node.js** on the backend.  
+Notes are stored via a simple JSON file on the backend – no database required.
+
+> 📦 GitHub Repo: [cs732-assignment-sliu734](https://github.com/UOA-CS732-S1-2025/cs732-assignment-sliu734)  
+> 🎯 Topic: PWA (Progressive Web App) with simple full-stack integration
+
+---
+
+## 🚀 Getting Started
+
+### 📦 Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- Git or terminal with Git support
+
+---
+
+### 🔧 Installation & Local Setup
+
+1. **Clone this repository**
+
+```bash
+git clone https://github.com/UOA-CS732-S1-2025/cs732-assignment-sliu734.git
+cd cs732-assignment-sliu734
+
+
+
+
+
+
+
+
+
+
+
 # Simple Notes (PWA)
 
 **Simple Notes** is a minimalist note-taking app built with **React + Vite** and enhanced with **Progressive Web App (PWA)** support. It allows users to add, complete, and delete notes — even while offline. Once installed, it feels and functions like a native mobile or desktop app.
@@ -115,4 +153,3 @@ This app was deployed to [Vercel](https://vercel.com/) in 1 click:
 Thanks to `vite-plugin-pwa`, all static assets are cached for offline use automatically.
 
 ---
-aa
