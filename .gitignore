@@ -24,7 +24,7 @@ dev-dist/
 # Runtime data
 server/notes.json
 
-# Editor
+# Editor1
 .vscode/
 !.vscode/extensions.json
 .idea/
