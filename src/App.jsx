@@ -2,6 +2,7 @@
 // Simple Notes App
 import { useState, useEffect } from 'react';
 import './App.css';
+import InstallButton from './InstallButton';
 
 const API_BASE = import.meta.env.VITE_API_URL;
 
@@ -91,8 +92,11 @@ function App() {
           </li>
         ))}
       </ul>
+      <InstallButton />
     </div>
   );
 }
+
+
 
 export default App;

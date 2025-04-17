@@ -9,6 +9,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png'],
+      devOptions: {
+        enabled: true     // Enable PWA in development mode
+      },
       manifest: {
         name: 'Simple Notes',
         short_name: 'Notes',
