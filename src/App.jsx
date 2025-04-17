@@ -49,10 +49,21 @@ function App() {
 
   // toggle note completion
   const handleToggleComplete = (id) => {
-    const updatedNotes = notes.map(note =>
-      note.id === id ? { ...note, completed: !note.completed } : note
-    );
-    setNotes(updatedNotes);
+    const updatedNote = notes.find(note => note.id === id);
+    if (!updatedNote) return;
+  
+    const toggledNote = { ...updatedNote, completed: !updatedNote.completed };
+  
+    fetch(`${API_BASE}/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ completed: toggledNote.completed })
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to update');
+        setNotes(notes.map(n => n.id === id ? toggledNote : n));
+      })
+      .catch(err => console.error('Failed to toggle complete:', err));
   };
 
   return (

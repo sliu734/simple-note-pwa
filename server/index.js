@@ -48,4 +48,17 @@ app.get('/', (req, res) => {
   res.send('👋 Hello, CS732er!');
 });
 
+app.patch('/api/notes/:id', (req, res) => {
+  const notes = readNotes();
+  const { id } = req.params;
+  const { completed } = req.body;
+
+  const note = notes.find(note => note.id === id);
+  if (!note) return res.status(404).json({ message: 'Note not found' });
+
+  note.completed = completed;
+  writeNotes(notes);
+  res.json(note);
+});
+
 app.listen(PORT, () => console.log(`✅ Express API running at http://localhost:${PORT}`));
