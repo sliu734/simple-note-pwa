@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const DATA_FILE = path.join(__dirname, 'notes.json');
 
 app.use(cors());
@@ -42,6 +42,10 @@ app.delete('/api/notes/:id', (req, res) => {
   notes = notes.filter(note => note.id !== req.params.id);
   writeNotes(notes);
   res.status(204).end();
+});
+
+app.get('/', (req, res) => {
+  res.send('👋 Hello, CS732er!');
 });
 
 app.listen(PORT, () => console.log(`✅ Express API running at http://localhost:${PORT}`));

@@ -1,11 +1,9 @@
-console.log('✅ App component loaded');
-
 
 // Simple Notes App
 import { useState, useEffect } from 'react';
 import './App.css';
 
-const API_BASE = 'http://localhost:4000/api/notes';
+const API_BASE = import.meta.env.VITE_API_URL;
 
 function App() {
   const [input, setInput] = useState('');

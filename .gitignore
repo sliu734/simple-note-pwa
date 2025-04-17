@@ -7,6 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# node_modules
+node_modules/
+server/node_modules/
+
 node_modules
 dist
 dist-ssr
@@ -22,3 +26,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Env files
+.env
+
+# Vite / build
+.vite/
+
+# Express runtime data
+server/notes.json
